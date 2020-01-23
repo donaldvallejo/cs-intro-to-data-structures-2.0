@@ -8,3 +8,4 @@ def rearrange():
         rand_arg = random.randint(0, len(arguments) - 1)
         print(arguments[rand_arg])
 rearrange()
+ 
