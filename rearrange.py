@@ -1,11 +1,11 @@
 import sys as sys
 import random
 
-arguments = sys.argv
+# arguments = sys.argv
+arguments = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 def rearrange():
-    for rand_arg in arguments:
-        rand_arg = random.randint(0, len(arguments) - 1)
-        print(arguments[rand_arg])
+    for i in arguments:
+        i = random.randint(0, len(arguments) - 1)
+        print(arguments[i])
 rearrange()
- 
