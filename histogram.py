@@ -43,6 +43,10 @@ def histogram(lines):
     histogram[word] = histogram.get(word, 0) + 1
   return histogram
 
+def get_frequency(word, histogram):
+  
+  return histogram
+
 def get_lines(filename):
   with open(filename, "r") as fh:
     return fh.readlines()
