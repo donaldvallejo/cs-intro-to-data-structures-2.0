@@ -11,44 +11,14 @@ class Dictogram(dict):
             for word in word_list:
                 self.add_word_to_histogram(word)
         
-    # def buildHistogram(self):
-    #     wordList = self.get_text(sys.argv[1])
-    #     histo = self.histodictogram(wordList)
-    #     return histo
-
-    # def histogram(self, wordsList):
-    #     data = dict()
-    #     found = False
-    #     for word in wordsList: 
-    #         for j in data:
-    #             if j[0] == word:
-    #                 found = True
-    #                 j[1] += 1
-    #                 break
-    #         if not found:
-    #             data[word] = 1
-    #     return data
-
-    # def histodictogram(self, word, count=1):
-    #     data = dict()
-    #         self.tokens += 1
-    #         data[word] = 1
-    #     else:
-    #         self.tokens += 1
-    #         data[word] += 1
-    #     return data
     
     def build_from_file(self, filename):
         with open(filename, 'r') as f:
             text_body = f.read()
 
             replace_new_lines = text_body.replace("\n", '')
-            # replace_three_dots = text_body.replace("...", '')
-            # replace_comma = replace_new_lines.replace(",", ' ')
-            # replace_periods = replace_comma.replace(".", ' ')
             prunned_text_body = replace_new_lines.strip(",. ")
             word_list = prunned_text_body.split(" ")
-
 
             for index in range(len(word_list)):
                 word = word_list[index].lower()
@@ -61,9 +31,6 @@ class Dictogram(dict):
             return self
 
 
-    # def return_histogram(self):
-    #     return self.histogram
-
     def add_word_to_histogram(self, word):
         if word not in self:
             self[word] = 1
@@ -75,9 +42,9 @@ class Dictogram(dict):
 
     def frequency(self, word):
         if word not in self:
-            return "Word wasn't found"
+            raise ValueError(f"{word} wasn't found")
         else:
-            return "{}: {}".format(word, self.get(word))
+            return self.get(word)
 
 
 if __name__ == "__main__":

@@ -6,10 +6,11 @@ class Listogram:
         super(Listogram, self).__init__()
         self.word_list = word_list
         self.listo = self.buildHistogram()
-        self.uniqueTypes = self.unique_words()
+        self.types = 0
 
     def buildHistogram(self):
-        wordList = self.get_text(sys.argv[1])
+        # wordList = self.get_text(sys.argv[1])
+        wordList = self.get_text("words.txt")
         histo = self.histogram(wordList)
         return histo
 
@@ -24,10 +25,8 @@ class Listogram:
                     break
             if not found:
                 arr.append([word, 1])
-        return arr
-
-    def unique_words(self):
-        return len(self.listo)   
+                self.types += 1
+        return arr     
 
     def frequency(self, arr, word):
         for j in arr:
@@ -44,10 +43,8 @@ class Listogram:
 
 if __name__ == "__main__":
     listo = Listogram()
-    wordList = listo.get_text(sys.argv[1])
-    histArr = listo.histogram(wordList)
-
-    print(f"Histogram : {histArr}")
+    wordList = listo.buildHistogram()
+    print(f"Histogram : {wordList}")
     # print("Histogram :" + str(listo.unique_words))
     # print("Unique words:" + str(listo.uniqueTypes))
     # print("# of 'The':" + str(frequency(arr, "the")))

@@ -16,6 +16,7 @@ def sample_by_frequency(histogram):
       start = end
 print (sample_by_frequency(word_counts))
 
+
 def sample(histogram):
     tokens = sum([count for word, count in histogram])
     dart = random.randint(1, tokens)
