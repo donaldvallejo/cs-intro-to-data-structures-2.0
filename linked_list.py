@@ -5,7 +5,7 @@ class Node(object):
     def __repr__(self):
         return 'Node{!r}'.format(self.data)
 
-class linked_list(object):
+class LinkedList(object):
     def __init__(self, iterable=None):
         self.head = None
         self.tail = None
@@ -72,3 +72,40 @@ class linked_list(object):
                 node = node.next
         return None
         
+    def delete(self, item):
+        node = self.head
+        prev_node = None
+        found = False
+
+        while not found and node is not None:
+            if node.data == item:
+                found = True
+            else:
+                prev_node = node
+                node = node.next
+                
+        if found:
+            if node is not self.head and node is not self.tail:
+                print("here")
+                prev_node.next = node.next
+                node.next = None
+            if node is self.head:
+                self.head = node.next
+                node.next = None
+            if node is self.tail:
+                if prev_node is not None:
+                    prev_node.next = None
+                self.tail = prev_node
+        else:
+            raise ValueError(f"oops didn't seem to find the item: {item}")
+
+
+if __name__ == "__main__":
+    ll = LinkedList()
+    ll.append(8)
+    ll.append(3)
+    ll.append(4)
+    ll.append(6)
+    print(ll)
+    ll.delete(3)
+    print(ll)
