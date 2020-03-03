@@ -96,6 +96,7 @@ class LinkedList(object):
                 if prev_node is not None:
                     prev_node.next = None
                 self.tail = prev_node
+            self.size -= 1
         else:
             raise ValueError(f"oops didn't seem to find the item: {item}")
 
