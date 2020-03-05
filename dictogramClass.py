@@ -45,6 +45,15 @@ class Dictogram(dict):
             raise ValueError(f"{word} wasn't found")
         else:
             return self.get(word)
+    
+    def sample(self):
+        tokens = sum([count for word, count in self.items()])
+        dart = randint(1, tokens)
+        fence = 0
+        for word, count in self.items():
+            fence += count
+            if fence >= dart:
+                return word
 
 
 if __name__ == "__main__":
